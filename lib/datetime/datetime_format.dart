@@ -7,6 +7,12 @@ extension Dates on DateTime {
   String showRecentTimeInArabic() {
     final def = DateTime.now().difference(this);
     switch (def.inSeconds) {
+      case 0:
+        return '0';
+      case 1:
+        return 'ثانية واحدة';
+      case 2:
+        return 'ثانيتان';
       case < 60:
         return '${def.inSeconds} ثواني';
       case < 3600:
