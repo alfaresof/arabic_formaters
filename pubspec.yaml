@@ -1,9 +1,9 @@
 name: arabic_formaters
 description: "A lightweight, powerful Dart extension package designed to simplify common tasks when dealing with Arabic content in Flutter and Dart applications."
 version: 1.0.0
-homepage: https://github.com/alfaresof/supabase_result_handler
-repository: https://github.com/alfaresof/supabase_result_handler
-issue_tracker: https://github.com/alfaresof/supabase_result_handler/issues
+homepage: https://github.com/alfaresof/arabic_formaters
+repository: https://github.com/alfaresof/arabic_formaters
+issue_tracker: https://github.com/alfaresof/arabic_formaters/issues
 
 environment:
   sdk: ^3.10.0
