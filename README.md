@@ -1,39 +1,112 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+# Arabic Formaters
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+A lightweight, powerful Dart extension package designed to simplify common tasks when dealing with Arabic content in Flutter and Dart applications.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Features ✨
 
-## Features
+* **Transliteration:** Convert Arabic names and strings into English-friendly usernames/text.
+* **Validation:** Easily check if a character belongs to the Arabic alphabet.
+* **Number Formatting:** Shorten large numbers with Arabic suffixes (e.g., 10K -> 10ألف).
+* **Time Ago (Arabic):** Display relative time (e.g., "5 minutes ago") in clean, concise Arabic.
+* **Date Recency:** Quickly check if a `DateTime` object falls within a specific recent range.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## Installation 💻
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add `arabic_helpers` (or your package name) to your `pubspec.yaml` file:
 
-## Usage
+```yaml
+dependencies:
+  arabic_helpers: ^latest_version
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
 ```
 
-## Additional information
+---
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Usage 🛠️
+
+### 1. String Extensions (Transliteration & Validation)
+
+Convert Arabic text to Latin characters for URLs or usernames.
+
+```dart
+import 'package:arabic_helpers/arabic_helpers.dart';
+
+void main() {
+  String name = "محمد";
+  print(name.convertArabicToUser()); // Output: mohamad
+
+  String char = "أ";
+  print(char.isArabicCharacter()); // Output: true
+}
+
+```
+
+### 2. Number Formatting
+
+Format large integers into a readable Arabic format.
+
+```dart
+void main() {
+  int subscribers = 5000;
+  print(subscribers.formatNumbers()); // Output: ٥ آلاف
+  
+  int views = 2000000;
+  print(views.formatNumbers()); // Output: ٢ م
+}
+
+```
+
+### 3. DateTime Extensions
+
+Get human-readable relative time in Arabic or check if a date is "new".
+
+```dart
+void main() {
+  DateTime postDate = DateTime.now().subtract(Duration(hours: 2));
+
+  // Show as "ساعتين"
+  print(postDate.showRecentTimeInArabic()); 
+
+  // Check if date is within the last 7 days (default)
+  print(postDate.isNewDate()); // Output: true
+  
+  // Custom range: Check if within last 2 days
+  print(postDate.isNewDate(days: 2)); 
+}
+
+```
+
+---
+
+## Reference 📖
+
+### String Extensions
+
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `convertArabicToUser()` | `String` | Maps Arabic letters to English phonetics. |
+| `isArabicCharacter()` | `bool` | Returns true if the string is a single Arabic character. |
+
+### Integer Extensions
+
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `formatNumbers()` | `String` | Appends 'ألف' for thousands and 'م' for millions. |
+
+### DateTime Extensions
+
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `showRecentTimeInArabic()` | `String` | Returns formatted string like "10 دقائق" or "3 يوم". |
+| `isNewDate({int? days})` | `bool` | Checks if the date is within the specified day count. |
+
+---
+
+## Dependencies 📦
+
+This package uses:
+
+* `intl`: For advanced date formatting.

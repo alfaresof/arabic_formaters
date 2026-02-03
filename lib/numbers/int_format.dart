@@ -9,9 +9,9 @@ String formatNumbers() {
     case < 1000:
       return '$this';
     case < 1000000:
-      return '$thisألف';
+      return '${this / 1000}ألف';
     default:
-      return '$thisم';
+      return '${this/1000000}م';
   }
 }
 }
